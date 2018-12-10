@@ -1,0 +1,28 @@
+{
+    "name": "aegis-network",
+    "type": "hlfv1",
+    "mspID": "KTHMSP",
+    "peers": [
+        {
+            "requestURL": "grpcs://localhost:7051",
+            "cert": "../crypto-config/peerOrganizations/bbc6.sics.se/peers/peer0.bbc6.sics.se/tls/ca.crt",
+            "hostnameOverride": "peer0.bbc6.sics.se",
+            "eventURL": "grpcs://localhost:7053"
+        }
+    ],
+    "ca": {
+        "url": "https://localhost:7054",
+        "cert": "../crypto-config/peerOrganizations/bbc6.sics.se/peers/peer0.bbc6.sics.se/tls/ca.crt",
+        "hostnameOverride": "ca.bbc6.sics.se",
+        "name": "ca.bbc6.sics.se"
+    },
+    "orderers": [
+        {
+            "url" : "grpcs://localhost:7050",
+            "hostnameOverride": "orderer.bbc6.sics.se",
+            "cert": "../crypto-config/ordererOrganizations/bbc6.sics.se/orderers/orderer.bbc6.sics.se/tls/ca.crt"
+        }
+    ],
+    "channel": "consortium",
+    "timeout": 300
+}

@@ -1,0 +1,23 @@
+{
+    "name": "aegis-network",
+    "type": "hlfv1",
+    "mspID": "KTHMSP",
+    "peers": [
+        {
+            "requestURL": "grpc://localhost:7051",
+            "eventURL": "grpc://localhost:7053"
+        }
+    ],
+    "ca": {
+        "url": "http://localhost:7054",
+        "name": "ca.bbc6.sics.se"
+    },
+    "orderers": [
+        {
+            "url" : "grpc://localhost:7050"
+        }
+    ],
+    "channel": "consortium",
+    "timeout": 300
+}
+

@@ -1,0 +1,33 @@
+version: '2'
+
+networks:
+  anet:
+    driver: bridge
+
+services:
+
+  orderer.bbc6.sics.se:
+    container_name: orderer.bbc6.sics.se
+    image: hyperledger/fabric-orderer:$ARCH-$VERSION
+    environment:
+      - ORDERER_GENERAL_LOGLEVEL=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_GENESISMETHOD=file
+      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/aegis-genesis.block
+      - ORDERER_GENERAL_LOCALMSPID=KTHOrdererMSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp/orderer/msp
+      # - ORDERER_GENERAL_TLS_ENABLED=true
+      # - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      # - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      # - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+    command: orderer
+    ports:
+      - 7050:7050
+    volumes:
+      - ../artifacts:/etc/hyperledger/configtx
+      - ../crypto-config/ordererOrganizations/bbc6.sics.se/orderers/orderer.bbc6.sics.se/msp:/etc/hyperledger/msp/orderer/msp
+      # - ../crypto-config/ordererOrganizations/bbc6.sics.se/orderers/orderer.bbc6.sics.se/tls:/var/hyperledger/orderer/tls
+    networks:
+      - anet
+

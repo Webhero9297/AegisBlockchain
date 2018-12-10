@@ -1,0 +1,3 @@
+[submodule "business-network"]
+	path = business-network
+	url = https://github.com/aegisbigdata/aegis-business-network
